@@ -32,6 +32,14 @@ data:
         K8S-Logging.Exclude On
 
     [OUTPUT]
+        Name              loki
+        Match             *
+        Host              loki.monitoring.svc.cluster.local
+        Port              3100
+        Labels            job=fluentbit
+        Auto_Kubernetes_Labels on
+
+    [OUTPUT]
         Name              s3
         Match             *
         bucket            cbrowers-k8s-logs
